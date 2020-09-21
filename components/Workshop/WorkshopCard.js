@@ -4,48 +4,55 @@ import React, { Component } from "react";
 // import { RiAddCircleFill } from "react-icons/ri";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 
-class WorkshopCard extends Component {
-  render() {
-    const { workshop } = this.props;
-    // const handleClick = () => {
-    //   const newItem = {
-    //     id: id,
-    //     name: name,
-    //     price: price,
-    //   };
-    //   addItem(newItem);
-    // };
-    return (
-      <div className=" row  align-items-center pb-5 workshop_item">
-        <div className="col-md-6 col-xs-12 text-center">
-          <img src={workshop.image} alt="workshop" height={300} />
-        </div>{" "}
-        <div className="col-md-6 col-xs-12">
-          <div>
-            <h1>{workshop.name}</h1>
-          </div>
-          <div>
-            <p>{workshop.description}</p>
-          </div>
-          <div className="d-flex justify-content-between">
-            <p>
-              {" "}
-              <MonetizationOnIcon style={{ fill: "#c5198c" }} size={30} />
-              <span className="pl-3"></span>
-              {workshop.price} KD
-            </p>
+//Material-ui
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
-            {/* <div>
-              <div className="btn btn_hover add_btn" onClick={handleClick}>
-                <RiAddCircleFill style={{ color: "white" }} size={30} /> Add To
-                Cart
-              </div>
-            </div> */}
-          </div>
-        </div>
-      </div>
-    );
-  }
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+});
+
+export default function WorkshopCard({ workshop }) {
+  const classes = useStyles();
+
+  return (
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image={workshop.image}
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h" component="h2">
+            {workshop.name}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {workshop.description}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            <MonetizationOnIcon style={{ fill: "#c5198c" }} size={30} />
+            <span className="pl-3"></span>
+            {workshop.price} KD
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+          Add to Cart
+        </Button>
+      </CardActions>
+    </Card>
+  );
 }
-
-export default WorkshopCard;
