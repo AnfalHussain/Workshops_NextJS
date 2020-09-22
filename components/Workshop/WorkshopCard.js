@@ -28,34 +28,36 @@ export default function WorkshopCard({ workshop }) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={workshop.image}
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h" component="h2" align="center">
-            {workshop.name}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {workshop.description}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            <MonetizationOnIcon style={{ fill: "#c5198c" }} />
-            {workshop.price} KD
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Box m="auto">
-          <Button size="small" color="primary">
-            <AddCircleIcon style={{ fill: "#c5198c" }} size={30} />
-            Add to Cart
-          </Button>{" "}
-        </Box>
-      </CardActions>
-    </Card>
+    <Box m={3} alignItems="center" justifyContent="center">
+      <Card className={classes.root}>
+        <CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={workshop.image}
+            title="Contemplative Reptile"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h" component="h2" align="center">
+              {workshop.name}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {workshop.description}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              <MonetizationOnIcon style={{ fill: "#c5198c" }} />
+              {workshop.price} KD
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Box m="auto">
+            <Button size="small" color="primary">
+              <AddCircleIcon style={{ fill: "#c5198c" }} size={30} />
+              Add to Cart
+            </Button>{" "}
+          </Box>
+        </CardActions>
+      </Card>
+    </Box>
   );
 }

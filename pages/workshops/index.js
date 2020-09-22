@@ -7,6 +7,7 @@ import WorkshopCard from "../../components/Workshop/WorkshopCard";
 //Material-ui
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,15 +43,17 @@ const Workshops = () => {
   if (data.workshops) console.log("data.workshops.workshops", data.workshops);
   return (
     <Fragment>
-      {data.workshops && (
-        <Grid container className={classes.root} spacing={2}>
-          {data.workshops.map((workshop) => (
-            <Grid item xs={4}>
-              <WorkshopCard key={workshop.id} workshop={workshop} />
-            </Grid>
-          ))}
-        </Grid>
-      )}
+      <Box m={3} alignItems="center" justifyContent="center">
+        {data.workshops && (
+          <Grid container className={classes.root} spacing={6}>
+            {data.workshops.map((workshop) => (
+              <Grid item xs={12} sm={6} md={4} xl={3}>
+                <WorkshopCard key={workshop.id} workshop={workshop} />
+              </Grid>
+            ))}
+          </Grid>
+        )}
+      </Box>
     </Fragment>
   );
 };
