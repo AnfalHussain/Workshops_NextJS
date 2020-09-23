@@ -47,9 +47,7 @@ const Workshops = () => {
         {data.workshops && (
           <Grid container className={classes.root} spacing={6}>
             {data.workshops.map((workshop) => (
-              <Grid item xs={12} sm={6} md={4} xl={3}>
-                <WorkshopCard key={workshop.id} workshop={workshop} />
-              </Grid>
+              <WorkshopCard key={workshop.id} workshop={workshop} />
             ))}
           </Grid>
         )}

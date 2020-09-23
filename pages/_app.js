@@ -5,6 +5,9 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
 
+//Navbar
+import Navbar from "../components/Navbar";
+
 //Apollo
 import { ApolloProvider } from "@apollo/react-hooks";
 import { useApollo } from "../apollo/client";
@@ -25,7 +28,7 @@ export default function MyApp(props) {
     <ApolloProvider client={apolloClient}>
       <React.Fragment>
         <Head>
-          <title>My page</title>
+          <title>Workshops</title>
           <meta
             name="viewport"
             content="minimum-scale=1, initial-scale=1, width=device-width"
@@ -34,6 +37,8 @@ export default function MyApp(props) {
         <ThemeProvider theme={theme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
+          <Navbar />
+
           <Component {...pageProps} />
         </ThemeProvider>
       </React.Fragment>
