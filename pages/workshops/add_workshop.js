@@ -48,13 +48,12 @@ export default function AddWorkshopForm(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log("price", typeof price);
     addWorkshop({
-      variables: {
-        name: name,
-        description: description,
-        image: image,
-        price: price,
-      },
+      name: name,
+      description: description,
+      image: image,
+      price: price,
     });
   };
 
@@ -103,7 +102,16 @@ export default function AddWorkshopForm(props) {
             </Grid>
 
             <Grid item xs={12}>
-              <input
+              <TextField
+                required
+                id="image"
+                name="image"
+                value={image}
+                label="Image"
+                onChange={changeHandler}
+                fullWidth
+              />
+              {/* <input
                 label="image"
                 name="image"
                 value={image}
@@ -118,7 +126,7 @@ export default function AddWorkshopForm(props) {
                 <Button variant="raised" component="span">
                   Upload
                 </Button>
-              </label>
+              </label> */}
             </Grid>
           </Grid>
         </Box>
