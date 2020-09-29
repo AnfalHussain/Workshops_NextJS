@@ -22,6 +22,9 @@ const useStyles = makeStyles({
   media: {
     height: 140,
   },
+  icon: {
+    fill: "#c5198c",
+  },
 });
 
 export default function WorkshopCard({ workshop }) {
@@ -49,16 +52,25 @@ export default function WorkshopCard({ workshop }) {
               <Typography variant="body2" color="textSecondary" component="p">
                 {workshop.description}
               </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                <MonetizationOnIcon style={{ fill: "#c5198c" }} />
-                {workshop.price} KD
-              </Typography>
+              <Box m="auto">
+                {/* <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="p"
+                ></Typography> */}
+                <Grid container direction="row" alignItems="center" spacing={1}>
+                  <Grid item>
+                    <MonetizationOnIcon className={classes.icon} />
+                  </Grid>
+                  <Grid item>{workshop.price} KD</Grid>
+                </Grid>
+              </Box>
             </CardContent>
           </CardActionArea>
           <CardActions>
             <Box m="auto">
               <Button size="small" color="primary">
-                <AddCircleIcon style={{ fill: "#c5198c" }} size={30} />
+                <AddCircleIcon className={classes.icon} size={30} />
                 Add to Cart
               </Button>{" "}
             </Box>
