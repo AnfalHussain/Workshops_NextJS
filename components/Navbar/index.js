@@ -7,6 +7,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
 import Slide from "@material-ui/core/Slide";
 import Link from "next/link";
 
@@ -40,9 +41,11 @@ export default function HideAppBar(props) {
       <HideOnScroll {...props}>
         <AppBar>
           <Toolbar>
-            <Typography variant="h6">Workshops</Typography>
-            <Link href="/workshops">
-              <div className="btn btn-primary">Workshops</div>
+            <Link href="/">
+              <Button>Workshops</Button>
+            </Link>
+            <Link href="workshops/add_workshop">
+              <Button>Add Workshop</Button>
             </Link>
           </Toolbar>
         </AppBar>
