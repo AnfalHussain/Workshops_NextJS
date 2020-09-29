@@ -25,6 +25,10 @@ const useStyles = makeStyles({
   icon: {
     fill: "#c5198c",
   },
+  wrapIcon: {
+    verticalAlign: "middle",
+    display: "inline-flex",
+  },
 });
 
 export default function WorkshopCard({ workshop }) {
@@ -52,19 +56,10 @@ export default function WorkshopCard({ workshop }) {
               <Typography variant="body2" color="textSecondary" component="p">
                 {workshop.description}
               </Typography>
-              <Box m="auto">
-                {/* <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  component="p"
-                ></Typography> */}
-                <Grid container direction="row" alignItems="center" spacing={1}>
-                  <Grid item>
-                    <MonetizationOnIcon className={classes.icon} />
-                  </Grid>
-                  <Grid item>{workshop.price} KD</Grid>
-                </Grid>
-              </Box>
+              <Typography variant="subtitle1" className={classes.wrapIcon}>
+                <MonetizationOnIcon className={classes.icon} /> {workshop.price}{" "}
+                KD
+              </Typography>
             </CardContent>
           </CardActionArea>
           <CardActions>
