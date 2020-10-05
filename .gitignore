@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# Translation required ignoring /pages since it will be generated in every build
+/pages
+
 # dependencies
 /node_modules
 /.pnp
