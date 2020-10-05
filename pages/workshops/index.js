@@ -1,59 +1,33 @@
-import { Button } from "@material-ui/core";
+// @ts-nocheck
+import I18nProvider from 'next-translate/I18nProvider'
+import React from 'react'
+import C from '../../pages_/workshops'
+import ns0 from '../../locales/en/common.json'
 
-import React, { Fragment } from "react";
-import { gql, useQuery } from "@apollo/client";
-import WorkshopCard from "../../components/Workshop/WorkshopCard";
+const namespaces = { 'common': ns0 }
 
-//Material-ui
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import { Box } from "@material-ui/core";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    height: 140,
-    width: 100,
-  },
-  control: {
-    padding: theme.spacing(2),
-  },
-}));
-const GET_WORKSHOPS = gql`
-  query {
-    workshops {
-      id
-      name
-      description
-      price
-      image
-    }
-  }
-`;
-
-const Workshops = () => {
-  const { data, loading, error } = useQuery(GET_WORKSHOPS);
-  const classes = useStyles();
-
-  if (loading) return <p>Loading</p>;
-  if (error) return <p>ERROR</p>;
-  if (!data) return <p>Not found</p>;
-  if (data.workshops) console.log("data.workshops.workshops", data.workshops);
+export default function Page(p){
   return (
-    <Fragment>
-      <Box m={3} alignItems="center" justifyContent="center">
-        {data.workshops && (
-          <Grid container className={classes.root} spacing={6}>
-            {data.workshops.map((workshop) => (
-              <WorkshopCard key={workshop.id} workshop={workshop} />
-            ))}
-          </Grid>
-        )}
-      </Box>
-    </Fragment>
-  );
-};
+    <I18nProvider 
+      lang="en" 
+      namespaces={namespaces}  
+      internals={{"defaultLanguage":"en","isStaticMode":true}}
+    >
+      <C {...p} />
+    </I18nProvider>
+  )
+}
 
-export default Workshops;
+Page = Object.assign(Page, { ...C })
+
+if(C && C.getInitialProps) {
+  Page.getInitialProps = ctx => C.getInitialProps({ ...ctx, lang: 'en'})
+}
+
+
+
+
+
+
+
+
